@@ -4,8 +4,8 @@
 # environement, ready for usage!
 
 set -e
+base_dir=$(cd "$(dirname "$0")" && pwd)
 
-base_dir=~/Neural
 urlCapture=git@github.com:NeuralStar/NeuralCapture.git
 urlAI=git@github.com:NeuralStar/Prod_NeuralStart.git
 
