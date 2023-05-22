@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Install and deploy the developpement
 # environement, ready for usage!
@@ -12,14 +12,14 @@ urlAI=git@github.com:NeuralStar/Prod_NeuralStart.git
 # Get all the environements
 mkdir -p $base_dir
 cd $base_dir
-git clone $urlCapture Capture | true
-git clone $urlAI AI | true
+git clone $urlCapture Capture || true
+git clone $urlAI AI || true
 
 # Prepare AI environement
 cd $base_dir/AI
 python3 -m venv .env
 source .env/bin/activate
-pip3 install -r AI/requirements.txt
+pip3 install -r requirements.txt
 
 # Prepare Capture environement
 cd $base_dir/Capture
