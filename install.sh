@@ -1,18 +1,26 @@
-base_dir=Projects/Neural
+#!/bin/sh
 
+# Install and deploy the developpement
+# environement, ready for usage!
+
+set -e
+
+base_dir=~/Neural
 urlCapture=git@github.com:NeuralStar/NeuralCapture.git
 urlAI=git@github.com:NeuralStar/Prod_NeuralStart.git
-urlServer=git@github.com:NeuralStar/PyCapture.git
 
+# Get all the environements
 mkdir -p $base_dir
 cd $base_dir
+git clone $urlCapture Capture | true
+git clone $urlAI AI | true
 
-git clone $urlCapture Capture
-git clone $urlAI AI
-git clone $urlServer Server
-
+# Prepare AI environement
+cd $base_dir/AI
 python3 -m venv .env
 source .env/bin/activate
 pip3 install -r AI/requirements.txt
 
-make -C Capture
+# Prepare Capture environement
+cd $base_dir/Capture
+make
